@@ -1,5 +1,10 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import Image from "next/image";
 
+<<<<<<< HEAD
+=======
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+>>>>>>> temp
 import { TypeAnimation } from "react-type-animation";
 
 

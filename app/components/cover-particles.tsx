@@ -1,7 +1,8 @@
 "use client"
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useCallback, useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { Container, Engine } from "@tsparticles/engine";
 // import { loadAll } from "@/tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 // import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.

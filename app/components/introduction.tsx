@@ -2,7 +2,11 @@
 
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
+<<<<<<< HEAD
 import Link from "next/Link"
+=======
+import Link from "next/link";
+>>>>>>> temp
 
 const Introduction = () => {
     return ( 
