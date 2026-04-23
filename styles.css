@@ -1,0 +1,489 @@
+/* ═══════════════════════════════════════════════════════════
+   RESET Y CONFIGURACIÓN BASE
+   ═══════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VARIABLES DE COLOR (modo oscuro por defecto)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Colores de la terminal */
+  --term-bg: #1e1e1e;           /* Fondo de la terminal */
+  --term-surface: #252526;      /* Fondo de pestañas/input */
+  --term-border: #3c3c3c;       /* Bordes */
+  --term-text: #d4d4d4;         /* Texto normal */
+  
+  /* Colores de sintaxis (tipo VS Code) */
+  --term-green: #4ec9b0;        /* Verde (éxito, prompt) */
+  --term-yellow: #dcdcaa;       /* Amarillo (rutas, títulos) */
+  --term-blue: #569cd6;         /* Azul (host, links) */
+  --term-pink: #c586c0;         /* Rosa (símbolos) */
+  --term-red: #f44747;          /* Rojo (errores) */
+  --term-gray: #858585;         /* Gris (comentarios) */
+  
+  /* Colores de UI */
+  --term-cursor: #aeafad;       /* Color del cursor */
+  --titlebar-bg: #323233;       /* Fondo barra de título */
+  --titlebar-text: #cccccc;     /* Texto barra título */
+  --page-bg: #141414;           /* Fondo de la página */
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MODO CLARO (Light mode)
+   ═══════════════════════════════════════════════════════════ */
+body.light-mode {
+  --term-bg: #f5f5f0;
+  --term-surface: #ffffff;
+  --term-border: #d0d0d0;
+  --term-text: #1a1a1a;
+  --term-green: #007acc;
+  --term-yellow: #795e26;
+  --term-blue: #0000ff;
+  --term-pink: #af00db;
+  --term-red: #cd3131;
+  --term-gray: #717171;
+  --term-cursor: #333;
+  --titlebar-bg: #e8e8e8;
+  --titlebar-text: #333;
+  --page-bg: #dcdcdc;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ESTILOS DEL BODY Y PÁGINA
+   ═══════════════════════════════════════════════════════════ */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: var(--page-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+  transition: background 0.3s;
+  padding: 20px;
+}
+
+/* Rejilla sutil de fondo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(100,100,100,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,100,100,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTENEDOR PRINCIPAL DE LA VENTANA
+   ═══════════════════════════════════════════════════════════ */
+.window-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 32px 80px rgba(0,0,0,0.6), 
+    0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.portfolio-wrap {
+  font-size: 13px;
+  line-height: 1.65;
+  background: var(--term-bg);
+  color: var(--term-text);
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  max-height: 85vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BARRA DE TÍTULO (estilo macOS)
+   ═══════════════════════════════════════════════════════════ */
+.titlebar {
+  background: var(--titlebar-bg);
+  padding: 11px 14px 9px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--term-border);
+}
+
+/* Contenedor de los 3 botones macOS */
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+/* Botones circulares de ventana */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: default;
+  transition: filter 0.15s;
+}
+
+.dot:hover {
+  filter: brightness(1.2);
+}
+
+/* Colores de cada botón */
+.dot.close {
+  background: #ff5f57;
+  box-shadow: 0 0 0 1px rgba(224, 68, 62, 0.4);
+}
+
+.dot.min {
+  background: #febc2e;
+  box-shadow: 0 0 0 1px rgba(214, 162, 35, 0.4);
+}
+
+.dot.max {
+  background: #28c840;
+  box-shadow: 0 0 0 1px rgba(26, 171, 46, 0.4);
+}
+
+/* Título de la ventana */
+.titlebar-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: var(--titlebar-text);
+  letter-spacing: 0.2px;
+}
+
+/* Controles de idioma/tema */
+.titlebar-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.ctrl-btn {
+  background: transparent;
+  border: 1px solid var(--term-border);
+  color: var(--titlebar-text);
+  font-family: 'SF Mono', monospace;
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.ctrl-btn:hover {
+  background: var(--term-border);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PESTAÑAS (tabs)
+   ═══════════════════════════════════════════════════════════ */
+.tab-bar {
+  background: var(--term-surface);
+  border-bottom: 1px solid var(--term-border);
+  display: flex;
+  gap: 2px;
+  padding: 5px 8px 0;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.tab {
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  color: var(--term-gray);
+  font-family: 'SF Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 4px 4px 0 0;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: var(--term-bg);
+  border-color: var(--term-border);
+  color: var(--term-text);
+}
+
+.tab:hover:not(.active) {
+  color: var(--term-text);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ÁREA DE OUTPUT (donde aparecen los comandos)
+   ═══════════════════════════════════════════════════════════ */
+.terminal-body {
+  flex: 1;
+  padding: 14px 18px 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Personalización del scrollbar */
+.terminal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: var(--term-border);
+  border-radius: 3px;
+}
+
+/* Línea de output */
+.output-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  margin-bottom: 2px;
+}
+
+.output-line.empty {
+  height: 13px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CLASES DE COLORES
+   ═══════════════════════════════════════════════════════════ */
+.c-green  { color: var(--term-green); }
+.c-yellow { color: var(--term-yellow); }
+.c-blue   { color: var(--term-blue); }
+.c-pink   { color: var(--term-pink); }
+.c-red    { color: var(--term-red); }
+.c-gray   { color: var(--term-gray); }
+.c-bold   { font-weight: 700; }
+
+/* ═══════════════════════════════════════════════════════════
+   PROMPT (línea de comando)
+   ═══════════════════════════════════════════════════════════ */
+.prompt-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 6px;
+}
+
+.prompt-user { color: var(--term-green); }
+.prompt-at   { color: var(--term-gray); }
+.prompt-host { color: var(--term-blue); }
+.prompt-path { color: var(--term-yellow); }
+.prompt-sym  { color: var(--term-pink); }
+
+/* ═══════════════════════════════════════════════════════════
+   ÁREA DE INPUT (donde escribes)
+   ═══════════════════════════════════════════════════════════ */
+.input-area {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-top: 1px solid var(--term-border);
+  padding: 9px 18px;
+  background: var(--term-surface);
+  flex-shrink: 0;
+}
+
+.input-prompt {
+  color: var(--term-green);
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+#cmd-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--term-text);
+  font-family: 'SF Mono', monospace;
+  font-size: 13px;
+  caret-color: var(--term-cursor);
+}
+
+#cmd-input::placeholder {
+  color: var(--term-gray);
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BARRA DE AYUDA (hints)
+   ═══════════════════════════════════════════════════════════ */
+.hint-bar {
+  padding: 4px 18px;
+  background: var(--term-surface);
+  border-top: 1px solid var(--term-border);
+  font-size: 10px;
+  color: var(--term-gray);
+  flex-shrink: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COMPONENTES PERSONALIZADOS
+   ═══════════════════════════════════════════════════════════ */
+
+/* Badge de habilidad */
+.skill-badge {
+  display: inline-block;
+  background: var(--term-border);
+  color: var(--term-green);
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin: 3px 4px 3px 0;
+  font-size: 11px;
+}
+
+/* Tarjeta de proyecto */
+.project-item {
+  border-left: 2px solid var(--term-green);
+  padding-left: 12px;
+  margin: 10px 0;
+}
+
+.project-name {
+  color: var(--term-green);
+  font-weight: 700;
+}
+
+.project-status {
+  font-size: 10px;
+  background: var(--term-border);
+  border-radius: 3px;
+  padding: 2px 7px;
+  color: var(--term-yellow);
+  margin-left: 6px;
+}
+
+.project-desc {
+  color: var(--term-gray);
+  margin: 3px 0;
+  line-height: 1.5;
+}
+
+/* ASCII art del logo */
+.ascii-art {
+  color: var(--term-green);
+  font-size: 9.5px;
+  line-height: 1.15;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE - MÓVIL
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .window-wrap {
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .portfolio-wrap {
+    font-size: 12px;
+    min-height: calc(100vh - 20px);
+    max-height: calc(100vh - 20px);
+  }
+
+  /* ASCII art más pequeño en móvil */
+  .ascii-art {
+    font-size: 6px;
+  }
+
+  /* Ocultar título en pantallas pequeñas */
+  .titlebar-title {
+    display: none;
+  }
+
+  /* Ajustar padding */
+  .terminal-body {
+    padding: 12px 14px 8px;
+  }
+
+  .input-area {
+    padding: 8px 14px;
+  }
+
+  .hint-bar {
+    padding: 4px 14px;
+    font-size: 9px;
+  }
+
+  /* Controles más pequeños */
+  .ctrl-btn {
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+
+  /* Badges más pequeños */
+  .skill-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    margin: 2px 3px 2px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-wrap {
+    font-size: 11px;
+  }
+
+  .ascii-art {
+    font-size: 4.5px;
+  }
+
+  #cmd-input {
+    font-size: 12px;
+  }
+
+  .project-item {
+    padding-left: 8px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ACCESIBILIDAD
+   ═══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Mejorar contraste en modo alto contraste */
+@media (prefers-contrast: high) {
+  .ctrl-btn {
+    border-width: 2px;
+  }
+  
+  .tab.active {
+    border-width: 2px;
+  }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive terminal portfolio" />
+  <title>Portfolio — Terminal</title>
+  
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Contenedor principal de la ventana tipo Mac -->
+  <div class="window-wrap">
+    <div class="portfolio-wrap" id="portfolio">
+
+      <!-- ═══════════════════════════════════════════════════
+           BARRA DE TÍTULO (estilo macOS)
+           ═══════════════════════════════════════════════════ -->
+      <div class="titlebar">
+        <!-- Botones de ventana (cerrar, minimizar, maximizar) -->
+        <div class="dots">
+          <div class="dot close"></div>
+          <div class="dot min"></div>
+          <div class="dot max"></div>
+        </div>
+
+        <!-- Título de la ventana -->
+        <span class="titlebar-title" id="titlebar-title">portfolio — bash — 80×24</span>
+
+        <!-- Controles de idioma y tema -->
+        <div class="titlebar-controls">
+          <button class="ctrl-btn" onclick="toggleLang()" aria-label="Toggle language">
+            🌐 <span id="lang-label">EN</span>
+          </button>
+          <button class="ctrl-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+            ☀ <span id="theme-label">Light</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════
+           PESTAÑAS (tabs estilo navegador)
+           ═══════════════════════════════════════════════════ -->
+      <div class="tab-bar">
+        <button class="tab active">portfolio.sh</button>
+        <button class="tab">~/about</button>
+        <button class="tab">~/projects</button>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════
+           ÁREA DE OUTPUT (donde se muestran los comandos)
+           ═══════════════════════════════════════════════════ -->
+      <div class="terminal-body" id="terminal-output">
+        <!-- Los comandos aparecen aquí dinámicamente -->
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════
+           INPUT (donde escribes los comandos)
+           ═══════════════════════════════════════════════════ -->
+      <div class="input-area">
+        <span class="input-prompt">
+          <span class="prompt-user">visitor</span><span class="prompt-at">@</span><span class="prompt-host">portfolio</span><span class="prompt-path">:~</span><span class="prompt-sym">$</span>
+        </span>
+        <input 
+          id="cmd-input" 
+          type="text" 
+          autocomplete="off" 
+          autocorrect="off" 
+          autocapitalize="off" 
+          spellcheck="false" 
+          placeholder="type a command…"
+          aria-label="Command input"
+        />
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════
+           BARRA DE AYUDA (hints de comandos disponibles)
+           ═══════════════════════════════════════════════════ -->
+      <div class="hint-bar" id="hint-bar">
+        try: help · about · skills · projects · experience · education · contact · clear
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       SCRIPTS
+       ═══════════════════════════════════════════════════ -->
+  <!-- Datos del portafolio (edita aquí tu información) -->
+  <script src="data.js"></script>
+  
+  <!-- Lógica de comandos -->
+  <script src="commands.js"></script>
+  
+  <!-- Script principal -->
+  <script src="app.js"></script>
+
+</body>
+</html>
