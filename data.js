@@ -7,186 +7,160 @@
    - Edita tanto la versión en inglés (en) como español (es)
    ═══════════════════════════════════════════════════════════ */
 
-const DATA = {
-  /* ─────────────────────────────────────────────────────────
-     VERSIÓN EN INGLÉS
-     ───────────────────────────────────────────────────────── */
-  en: {
-    /* ── INFORMACIÓN PERSONAL ── */
-    name:     'Alex Rivera',
-    role:     'Full-Stack Developer · UI/UX Designer · Open Source Enthusiast',
-    location: 'Bogotá, Colombia',
-    status:   'Open to opportunities',
-    hobbies:  'Cycling, Coffee, Side projects',
-
-    /* ── SOBRE MÍ (about) ── 
-       Array de párrafos que describen quién eres */
-    about_paragraphs: [
-      "Hi! I'm Alex Rivera — a full-stack developer based in Colombia.",
-      "I build clean, performant, and delightful digital experiences.",
-      "I've spent 5+ years crafting web applications, from ideation to deployment.",
-      "I'm passionate about developer experience, open-source, and making the web accessible to everyone."
-    ],
-
-    /* ── HABILIDADES (skills) ──
-       Organiza tus tecnologías por categorías */
-    skills: {
-      'Frontend':  ['React', 'Next.js', 'TypeScript', 'Tailwind', 'GSAP', 'Figma'],
-      'Backend':   ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'GraphQL', 'Docker'],
-      'Tools':     ['Git', 'CI/CD', 'AWS', 'Linux', 'Neovim', 'Postman'],
+   const DATA = {
+    /* ─────────────────────────────────────────────────────────
+       VERSIÓN EN INGLÉS
+       ───────────────────────────────────────────────────────── */
+    en: {
+      /* ── INFORMACIÓN PERSONAL ── */
+      name:     'Juan Sebastian Lopez Vanegas',
+      role:     'Web Developer · Data Analyst',
+      location: 'Bogotá D.C., Colombia',
+      status:   'Open to new job opportunities',
+      hobbies:  'Gym, Motorcycles, Learning languages and new skills',
+  
+      /* ── SOBRE MÍ (about) ── 
+         Array de párrafos que describen quién eres */
+      about_paragraphs: [
+        "Hi! I'm Juan Sebastian Lopez — a web developer and data analyst based in Colombia.",
+        "I have around one year of professional experience in software development and data analysis.",
+        "I'm always open to new challenges and opportunities, constantly learning and improving my skills.",
+        "If I don’t know something, I figure it out — I research, adapt, and make things happen."
+      ],
+  
+      /* ── HABILIDADES (skills) ──
+         Organiza tus tecnologías por categorías */
+      skills: {
+        'Frontend':  ['HTML', 'CSS', 'JavaScript', 'React', 'WordPress', 'Elementor'],
+        'Backend':   ['Node.js', 'Python', 'MySQL', 'Firebase'],
+        'Tools':     ['Git', 'GitHub', 'Power BI', 'Excel', 'Google Tag Manager'],
+      },
+  
+      /* ── PROYECTOS (projects) ──
+         Lista de tus proyectos destacados
+         - name: nombre del proyecto
+         - desc: descripción corta
+         - stack: array de tecnologías usadas
+         - status: estado actual (Live, Open Source, Production, etc.) */
+      projects: [
+        { 
+          name: 'Portfolio Website',
+          desc: 'Personal portfolio showcasing web development and data analysis projects.',
+          stack: ['HTML', 'CSS', 'JavaScript'],
+          status: 'Live'
+        },
+        { 
+          name: 'Data Dashboard',
+          desc: 'Interactive dashboard for data visualization and analysis using Power BI.',
+          stack: ['Power BI', 'Excel'],
+          status: 'Completed'
+        },
+        { 
+          name: 'WordPress Business Site',
+          desc: 'Website built with WordPress and Elementor for a business, optimized for SEO.',
+          stack: ['WordPress', 'Elementor'],
+          status: 'Production'
+        },
+      ],
+  
+      /* ── EXPERIENCIA LABORAL (experience) ──
+         Historial de trabajos
+         - period: fechas (ej: "2022 - Present")
+         - title: puesto y empresa
+         - desc: descripción de logros/responsabilidades */
+      experience: [
+        { 
+          period: '2024 – Present',
+          title: 'Web Developer & Data Analyst',
+          desc: 'Worked on web development projects and data analysis tasks, improving business insights and digital presence.'
+        }
+      ],
+  
+      /* ── EDUCACIÓN (education) ──
+         Formación académica y certificaciones */
+      education: {
+        degree: 'Systems / Related Technology Studies',
+        school: 'Colombia',
+        certs: [
+          'Web Development Training',
+          'Data Analysis Fundamentals',
+        ]
+      },
+  
+      /* ── CONTACTO (contact) ──
+         Tus redes sociales y medios de contacto */
+      contact: {
+        Email:    'juans.lopez2004@gmail.com',
+        GitHub:   'github.com/sebaslv',
+      },
+      contact_footer: "I'm always open to new opportunities. Let's build something great!",
     },
-
-    /* ── PROYECTOS (projects) ──
-       Lista de tus proyectos destacados
-       - name: nombre del proyecto
-       - desc: descripción corta
-       - stack: array de tecnologías usadas
-       - status: estado actual (Live, Open Source, Production, etc.) */
-    projects: [
-      { 
-        name: 'DevFlow',
-        desc: 'Real-time collaborative coding platform for remote teams. Built with WebSockets, React, and Node.',
-        stack: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-        status: 'Live'
+  
+    /* ─────────────────────────────────────────────────────────
+       VERSIÓN EN ESPAÑOL (replica la estructura de arriba)
+       ───────────────────────────────────────────────────────── */
+    es: {
+      name:     'Juan Sebastian Lopez Vanegas',
+      role:     'Desarrollador Web · Analista de Datos',
+      location: 'Bogotá D.C., Colombia',
+      status:   'Buscando nuevas oportunidades de empleo',
+      hobbies:  'Gym, motos, aprender idiomas y nuevos conocimientos',
+  
+      about_paragraphs: [
+        "¡Hola! Soy Juan Sebastian Lopez — desarrollador web y analista de datos en Colombia.",
+        "Tengo alrededor de un año de experiencia laboral en desarrollo de software y análisis de datos.",
+        "Estoy abierto a nuevos retos y oportunidades, siempre aprendiendo y mejorando.",
+        "Si no sé algo, lo investigo, me adapto y encuentro la forma de hacerlo posible."
+      ],
+  
+      skills: {
+        'Frontend':      ['HTML', 'CSS', 'JavaScript', 'React', 'WordPress', 'Elementor'],
+        'Backend':       ['Node.js', 'Python', 'MySQL', 'Firebase'],
+        'Herramientas':  ['Git', 'GitHub', 'Power BI', 'Excel', 'Google Tag Manager'],
       },
-      { 
-        name: 'Termi-UI',
-        desc: 'Open-source terminal-inspired UI component library. 2k+ GitHub stars.',
-        stack: ['TypeScript', 'CSS', 'Storybook', 'npm'],
-        status: 'Open Source'
+  
+      projects: [
+        { 
+          name: 'Portafolio Web',
+          desc: 'Sitio personal donde muestro proyectos de desarrollo web y análisis de datos.',
+          stack: ['HTML', 'CSS', 'JavaScript'],
+          status: 'En vivo'
+        },
+        { 
+          name: 'Dashboard de Datos',
+          desc: 'Panel interactivo para visualización y análisis de datos con Power BI.',
+          stack: ['Power BI', 'Excel'],
+          status: 'Completado'
+        },
+        { 
+          name: 'Sitio en WordPress',
+          desc: 'Página web creada con WordPress y Elementor optimizada para SEO.',
+          stack: ['WordPress', 'Elementor'],
+          status: 'Producción'
+        },
+      ],
+  
+      experience: [
+        { 
+          period: '2024 – Presente',
+          title: 'Desarrollador Web y Analista de Datos',
+          desc: 'Trabajo en proyectos de desarrollo web y análisis de datos, mejorando la presencia digital y la toma de decisiones.'
+        }
+      ],
+  
+      education: {
+        degree: 'Estudios en Sistemas o área afín',
+        school: 'Colombia',
+        certs: [
+          'Formación en Desarrollo Web',
+          'Fundamentos de Análisis de Datos',
+        ]
       },
-      { 
-        name: 'PulseAPI',
-        desc: 'RESTful analytics API processing 10M+ daily events with sub-50ms latency.',
-        stack: ['Python', 'FastAPI', 'Redis', 'PostgreSQL'],
-        status: 'Production'
+  
+      contact: {
+        Email:    'juans.lopez2004@gmail.com',
+        GitHub:   'github.com/sebaslv',
       },
-    ],
-
-    /* ── EXPERIENCIA LABORAL (experience) ──
-       Historial de trabajos
-       - period: fechas (ej: "2022 - Present")
-       - title: puesto y empresa
-       - desc: descripción de logros/responsabilidades */
-    experience: [
-      { 
-        period: '2022 – Present',
-        title: 'Senior Frontend Developer @ TechCorp Latam',
-        desc: 'Led UI overhaul reducing load times by 40%. Managed a team of 4.'
-      },
-      { 
-        period: '2020 – 2022',
-        title: 'Full-Stack Developer @ StartupX',
-        desc: 'Built and shipped 3 SaaS products from scratch. MVP to scale.'
-      },
-      { 
-        period: '2018 – 2020',
-        title: 'Junior Dev @ Agency Creative',
-        desc: 'Developed web experiences for 20+ brands.'
-      },
-    ],
-
-    /* ── EDUCACIÓN (education) ──
-       Formación académica y certificaciones */
-    education: {
-      degree: 'B.Sc. Systems Engineering',
-      school: 'Universidad de los Andes, Bogotá — 2018',
-      certs: [
-        'AWS Solutions Architect Associate (2023)',
-        'Google UX Design Certificate (2022)',
-        'Meta Frontend Developer (2021)',
-      ]
-    },
-
-    /* ── CONTACTO (contact) ──
-       Tus redes sociales y medios de contacto */
-    contact: {
-      Email:    'alex@portfolio.dev',
-      GitHub:   'github.com/alexrivera',
-      LinkedIn: 'linkedin.com/in/alexrivera',
-      Twitter:  '@alexrivera_dev',
-    },
-    contact_footer: "I'm always up for a good chat. Let's build something together!",
-  },
-
-  /* ─────────────────────────────────────────────────────────
-     VERSIÓN EN ESPAÑOL (replica la estructura de arriba)
-     ───────────────────────────────────────────────────────── */
-  es: {
-    name:     'Alex Rivera',
-    role:     'Desarrollador Full-Stack · Diseñador UI/UX · Entusiasta Open Source',
-    location: 'Bogotá, Colombia',
-    status:   'Abierto a oportunidades',
-    hobbies:  'Ciclismo, Café, Proyectos paralelos',
-
-    about_paragraphs: [
-      "¡Hola! Soy Alex Rivera — desarrollador full-stack en Colombia.",
-      "Construyo experiencias digitales limpias, eficientes y deliciosas.",
-      "Llevo 5+ años creando aplicaciones web, desde la idea hasta el despliegue.",
-      "Me apasiona la experiencia del desarrollador, el open-source y hacer la web accesible para todos."
-    ],
-
-    skills: {
-      'Frontend':      ['React', 'Next.js', 'TypeScript', 'Tailwind', 'GSAP', 'Figma'],
-      'Backend':       ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'GraphQL', 'Docker'],
-      'Herramientas':  ['Git', 'CI/CD', 'AWS', 'Linux', 'Neovim', 'Postman'],
-    },
-
-    projects: [
-      { 
-        name: 'DevFlow',
-        desc: 'Plataforma de codificación colaborativa en tiempo real. Construida con WebSockets, React y Node.',
-        stack: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-        status: 'En vivo'
-      },
-      { 
-        name: 'Termi-UI',
-        desc: 'Librería de componentes UI open-source inspirada en terminales. 2k+ estrellas en GitHub.',
-        stack: ['TypeScript', 'CSS', 'Storybook', 'npm'],
-        status: 'Open Source'
-      },
-      { 
-        name: 'PulseAPI',
-        desc: 'API REST de analíticas procesando 10M+ eventos diarios con latencia menor a 50ms.',
-        stack: ['Python', 'FastAPI', 'Redis', 'PostgreSQL'],
-        status: 'Producción'
-      },
-    ],
-
-    experience: [
-      { 
-        period: '2022 – Presente',
-        title: 'Desarrollador Frontend Senior @ TechCorp Latam',
-        desc: 'Lideré rediseño de UI reduciendo tiempos de carga en 40%. Equipo de 4.'
-      },
-      { 
-        period: '2020 – 2022',
-        title: 'Desarrollador Full-Stack @ StartupX',
-        desc: 'Construí y lancé 3 productos SaaS desde cero. De MVP a escala.'
-      },
-      { 
-        period: '2018 – 2020',
-        title: 'Dev Junior @ Agency Creative',
-        desc: 'Desarrollé experiencias web para más de 20 marcas.'
-      },
-    ],
-
-    education: {
-      degree: 'Ing. de Sistemas',
-      school: 'Universidad de los Andes, Bogotá — 2018',
-      certs: [
-        'AWS Solutions Architect Associate (2023)',
-        'Google UX Design Certificate (2022)',
-        'Meta Frontend Developer (2021)',
-      ]
-    },
-
-    contact: {
-      Email:    'alex@portfolio.dev',
-      GitHub:   'github.com/alexrivera',
-      LinkedIn: 'linkedin.com/in/alexrivera',
-      Twitter:  '@alexrivera_dev',
-    },
-    contact_footer: "Siempre dispuesto a una buena charla. ¡Construyamos algo juntos!",
-  }
-};
+      contact_footer: "Siempre abierto a nuevas oportunidades. ¡Construyamos algo juntos!",
+    }
+  };
